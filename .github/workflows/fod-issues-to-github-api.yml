@@ -15,15 +15,12 @@ jobs:
           user: ${{ secrets.FOD_EIGHTBALL_USER }}
           password: ${{ secrets.FOD_EIGHTBALL_PAT }}
           release-id: ${{ secrets.FOD_EIGHTBALL_RELEASE_ID }}
-          #output: ./sarif/output.sarif
-          output: /home/runner/work/githubActionsDemo/results/output.sarif
+          output: ./sarif/output.sarif
       - uses: github/codeql-action/upload-sarif@v1
         with:
-          #sarif_file: ./sarif/output.sarif
-          sarif_file: /home/runner/work/githubActionsDemo/results/output.sarif
+          sarif_file: ./sarif/output.sarif
       - uses: actions/upload-artifact@v2
         if: always()
         with:
           name: sarif-files
-          path: /home/runner/work/githubActionsDemo/results/
-           
+          path: ./sarif
